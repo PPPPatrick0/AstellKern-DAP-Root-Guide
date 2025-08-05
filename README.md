@@ -165,10 +165,10 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 
 ### Important Notes
 
-*** Risk Disclaimer ***
+***Risk Disclaimer***
 * The rooting process may carry risks, including but not limited to voiding the warranty, data loss, or even permanently damaging ("bricking") your device. Please proceed only after you have fully understood all steps and potential risks. You are solely responsible for all your actions.
 
-** APK Package Name Confirmation **
+**APK Package Name Confirmation**
 * Due to the Astell&Kern OS employing a whitelist system to restrict APK installations, all APK files provided in this guide have had their Package Names modified to bypass this limitation.
 * Consequently, each modified APK is named in the format of xxx_Modded(package_name).apk. This is to help you check for any potential package name conflicts with applications already on your device.  
 (This applies to UI4-based models).
@@ -282,12 +282,12 @@ Open the newly installed APatch manager on your device.
 In the input field on the main screen, enter the SuperKey you set previously.  
 Tap confirm. If everything went smoothly, the app should indicate that root is active. You can verify this by running adb shell and executing the su command to see if you get the # prompt.
 
-** At this point, your Astell&Kern DAP has been successfully rooted. **
+**At this point, your Astell&Kern DAP has been successfully rooted.**
   
 Let your imagination run wild; there's nothing you can't do with root access!  
 Stay tuned for a guide on how to disable the iRiver OS app whitelist! [@7dollars](https://github.com/7dollars)  
   
-** Enjoy It! **
+**Enjoy It!**
 
 
 ## Shout-Outs!
