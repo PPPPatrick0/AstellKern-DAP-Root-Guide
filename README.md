@@ -121,7 +121,7 @@ fastboot --disable-verity flash vbmeta vbmeta.img
 # 关闭针对system分区的验证链
 fastboot --disable-verity flash vbmeta_system vbmeta_system.img
 ```
-* 刷写最终镜像
+* 刷写最终镜像  
 在主机的终端里，导航到包含最终APatch镜像的目录，执行刷写命令：  
 ```
 # 将 "Your/File/Path" 替换为您实际的文件路径和名称
