@@ -33,11 +33,11 @@ Rooting the Astell&Kern DAP with Apatch
 
 ### 1 准备工作
 在设备上启用开发者选项，并打开USB调试权限。  
-由于SP3000没有在常规设置中提供开启ADB调试的入口，我们需要通过一个终端命令来调用其隐藏的工厂调试菜单。
+由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个终端命令来调用其隐藏的工厂调试菜单。
 #### 1) 安装终端模拟器
 在Release中，下载 APK.zip。  
 定位到 Term_Modded(uk.co.sevendigital.android).apk 这个文件。这是一个经过修改的终端模拟器应用。  
-将此APK文件传输到您的SP3000设备内部存储中，并进行安装。
+将此APK文件传输到您的设备内部存储中，并进行安装。
 
 #### 2) 开启ADB调试
 在终端模拟器应用中，输入以下命令，然后按回车键：  
@@ -48,7 +48,7 @@ am start --user 0 -n com.iriver.tester.factorytool/.DebugSettingActivity
 在此界面中，找到 ADB Debug 选项，并将其开启。  
 
 #### 3) 验证连接
-现在，使用USB数据线将您的SP3000连接到Linux主机。  
+现在，使用USB数据线将您的设备连接到主机。  
 在主机的终端里，输入以下命令：
 ```
 adb devices
@@ -56,7 +56,7 @@ adb devices
 如果您看到输出了您设备的序列号，并且状态为 device，则表示ADB连接已成功建立。
 
 #### 4) （可选，但强烈推荐）永久开启ADB调试
-默认情况下，每次重启SP3000后，ADB调试选项都会自动关闭。  
+默认情况下，每次重启设备后，ADB调试选项都会自动关闭。  
 为了方便后续操作及日后使用，您可以将其设置为永久开启。  
 在主机的终端里，输入以下命令：
 ```
@@ -84,7 +84,7 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 至此获得解密后的镜像文件。
 
 ### 3 通过APatch获取Root权限
-由于目标设备（SP3000）上修改包名的APatch管理器存在文件写入问题，我们需要借助一台普通的安卓设备来完成启动镜像的修补工作。
+由于目标设备上修改包名后的APatch管理器存在文件写入问题，我们需要借助一台普通的安卓设备来完成启动镜像的修补工作。
 #### 1) 在“辅助设备”上制作APatch镜像
 您需要一台普通的、无特殊限制的安卓设备（手机或平板均可）作为“辅助设备”。  
 * 在下载的 APK.zip中，解压后得到 APatch_10763_original.apk。  
@@ -103,17 +103,16 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 修补成功后，在辅助设备的“下载”文件夹中，会生成一个名为 apatch_patched_....img 的新文件。这就是我们最终需要的启动镜像。  
 将这个修补完成的镜像，从辅助设备传回您的主机。
 
-#### 2) 为SP3000刷入镜像并重启
+#### 2) 为设备刷入镜像并重启
 
-* 在主机的终端里，输入以下命令让设备重启到fastbootd模式：  
+* 在主机的终端里，输入以下命令让设备重启到fastboot模式：  
 ```
-adb reboot fastboot
+adb reboot bootloader
 ```
-注意：请确保设备进入的是 fastbootd 模式（屏幕上会显示fastbootd字样），而不是常规的fastboot（即Bootloader）模式。  
-* 禁用刷写vbmeta镜像以禁用AVB  
+* 刷写vbmeta镜像以禁用AVB  
 我们需要刷写vbmeta和vbmeta_system两个镜像，以彻底关闭安卓验证启动（AVB, Android Verified Boot）。  
 执行刷写：  
-在fastbootd模式下，执行以下两条命令：  
+在fastboot模式下，执行以下两条命令：  
 ```
 # 关闭主验证链
 fastboot --disable-verity flash vbmeta vbmeta.img
@@ -127,7 +126,7 @@ fastboot --disable-verity flash vbmeta_system vbmeta_system.img
 # 将 "Your/File/Path" 替换为您实际的文件路径和名称
 fastboot flash boot "Your/File/Path/apatch_patched_....img"
 
-# 镜像刷写完成后，执行以下命令重启您的SP3000：
+# 镜像刷写完成后，执行以下命令重启您的设备：
 fastboot reboot
 ```
 
@@ -135,14 +134,14 @@ fastboot reboot
 等待设备进入操作系统。  
 * 安装修改版APatch管理器：  
 在 APK.zip 中，找到 APatch_10763_Modded(com.appgeneration.itunerfree).apk。  
-将这个修改了包名的版本，安装到您的SP3000上。  
+将这个修改了包名的版本，安装到您的设备上。  
 * 获取Root权限：  
-在SP3000上打开刚刚安装的APatch管理器。  
+在设备上打开刚刚安装的APatch管理器。  
 在应用主界面的输入框中，输入您之前设定好的那个SuperKey。  
 点击确认。如果一切顺利，应用将显示Root已激活。您可以通过 adb shell 并执行 su 命令来验证是否已获得#权限。
 
 
-**至此，您的Astell&Kern SP3000已成功获取Root权限。**  
+**至此，您的Astell&Kern DAP已成功获取Root权限。**  
   
 请发挥你的想象力，没有什么是在拥有Root后做不到的！  
 关于解除Iriver操作系统的APP白名单限制，敬请期待！[@7dollars](https://github.com/7dollars)  
