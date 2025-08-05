@@ -22,7 +22,7 @@ Rooting the Astell&Kern DAP with Apatch
 
 **APK包名确认:**
 * 由于AK操作系统采用白名单制度来限制APK文件的安装，本指南中的所有APK文件均通过了修改Package Name的方式来绕过AK的限制。  
-因此，每一个修改后的APK文件格式均为xxx_Modded(package_name).apk的格式上传，以方便你自行查找是否存在包名冲突的Application。
+因此，每一个修改后的APK文件格式均为xxx_Modded(package_name).apk的格式上传，以方便你自行查找是否存在包名冲突的Application。  
 （仅限UI4的机型）
 
 ### 操作流程概览
