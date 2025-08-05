@@ -34,7 +34,6 @@ Rooting the Astell&Kern DAP with Apatch
 ### 1 准备工作
 在设备上启用开发者选项，并打开USB调试权限。  
 由于SP3000没有在常规设置中提供开启ADB调试的入口，我们需要通过一个终端命令来调用其隐藏的工厂调试菜单。
-
 #### 1) 安装终端模拟器
 在Release中，下载 APK.zip。  
 定位到 Term_Modded(uk.co.sevendigital.android).apk 这个文件。这是一个经过修改的终端模拟器应用。  
@@ -68,7 +67,6 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 完成此操作后，ADB调试模式将会被永久激活，即使设备重启也不会关闭。
 
 ### 2 获取镜像文件
-
 #### 1) 获得解密后的update.zip
 请下载自己机型的OTA文件，名称一般为  `版本号.hex` ，下载后放入机器的根目录。  
 在机器上点击确认升级。  
@@ -87,7 +85,6 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 
 ### 3 通过APatch获取Root权限
 由于目标设备（SP3000）上修改包名的APatch管理器存在文件写入问题，我们需要借助一台普通的安卓设备来完成启动镜像的修补工作。
-
 #### 1) 在“辅助设备”上制作APatch镜像
 您需要一台普通的、无特殊限制的安卓设备（手机或平板均可）作为“辅助设备”。  
 * 在下载的 APK.zip中，解压后得到 APatch_10763_original.apk。  
@@ -113,7 +110,7 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 adb reboot fastboot
 ```
 注意：请确保设备进入的是 fastbootd 模式（屏幕上会显示fastbootd字样），而不是常规的fastboot（即Bootloader）模式。  
-* 禁用刷写vbmeta镜像以禁用AVB
+* 禁用刷写vbmeta镜像以禁用AVB  
 我们需要刷写vbmeta和vbmeta_system两个镜像，以彻底关闭安卓验证启动（AVB, Android Verified Boot）。  
 执行刷写：  
 在fastbootd模式下，执行以下两条命令：  
