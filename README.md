@@ -46,6 +46,7 @@ am start --user 0 -n com.iriver.tester.factorytool/.DebugSettingActivity
 ```
 执行后，您将直接进入Astell&Kern的工厂调试界面。  
 在此界面中，找到 ADB Debug 选项，并将其开启。  
+(在PD10上确认该命令已失效，PD10需要在寻找其他方式)
 
 #### 3) 验证连接
 现在，使用USB数据线将您的设备连接到主机。  
@@ -99,7 +100,7 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 在文件选择器中，找到并选择您刚刚拷贝的那个boot.img文件。  
 应用会提示您设置一个 SuperKey。这是一个用于在管理器中激活Root权限的“密码”，请务必设置一个并牢牢记住它。  
 输入完SuperKey后，点击“开始”（Start Patching）。APatch将会开始修补boot.img。  
-*获取最终镜像：  
+* 获取最终镜像：  
 修补成功后，在辅助设备的“下载”文件夹中，会生成一个名为 apatch_patched_....img 的新文件。这就是我们最终需要的启动镜像。  
 将这个修补完成的镜像，从辅助设备传回您的主机。
 
