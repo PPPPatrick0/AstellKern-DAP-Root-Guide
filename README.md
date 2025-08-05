@@ -154,8 +154,141 @@ fastboot reboot
 
 ## English Version
 
+<del>
 Oops: 404: English Translation Not Found  
 My translator is currently compiling (or maybe I'm just procrastinating). An English version of this epic saga is on its way. In the meantime, I hope the code snippets and command lines speak for themselves. 
+</del>
+
+### Brief Introduction
+* This guide aims to provide a comprehensive rooting solution for Astell&Kern DAPs. The method was originally developed and tested on an SP3000 (standard version) running firmware v1.51.
+* Currently, this guide can be referenced for rooting Astell&Kern devices running UI4 and UI4.5, such as the SP3000 and SP3000T (verified) ,and potentially the SE300 etc...(UI4), SP4000 (UI4.5) (theoretically possible, but not yet verified).
+
+### Important Notes
+
+*** Risk Disclaimer ***
+* The rooting process may carry risks, including but not limited to voiding the warranty, data loss, or even permanently damaging ("bricking") your device. Please proceed only after you have fully understood all steps and potential risks. You are solely responsible for all your actions.
+
+** APK Package Name Confirmation **
+* Due to the Astell&Kern OS employing a whitelist system to restrict APK installations, all APK files provided in this guide have had their Package Names modified to bypass this limitation.
+* Consequently, each modified APK is named in the format of xxx_Modded(package_name).apk. This is to help you check for any potential package name conflicts with applications already on your device.  
+(This applies to UI4-based models).
+
+### Process Overview
+** This guide will walk you through three core stages: **
+* Preparation 1: Enable Developer Options and turn on USB Debugging on your device.
+* Preparation 2: Obtain the decrypted system image files for your device.
+* Achieving Root: Flash the APatch-patched boot image and install the APatch Manager.
+
+### 1. Preparation: Enabling ADB
+Since AK devices do not offer an ADB toggle in the standard settings, we need to invoke a hidden factory menu using a terminal command.
+#### 1) Install a Terminal Emulator
+Download the APK.zip from the Releases section of this repository.  
+Locate the file Term_Modded(uk.co.sevendigital.android).apk. This is a modified terminal emulator app.  
+Transfer this APK file to your device's internal storage and install it.  
+
+#### 2) Enable ADB Debugging
+In the terminal emulator app on your device, type the following command:
+```
+am start --user 0 -n com.iriver.tester.factorytool/.DebugSettingActivity
+```
+This will launch you directly into the Astell&Kern factory debug menu.  
+Within this menu, find the ADB Debug option and enable it.  
+(Note: This command has been confirmed to be invalid on the PD10 model. An alternative method is needed for the PD10.)
+
+#### 3) Verify the Connection
+Now, connect your device to your host machine using a USB cable.  
+In your host's terminal, enter the following command:
+```
+adb devices
+```
+If you see your device's serial number listed with the status device, the ADB connection is successfully established.
+
+#### 4) (Optional but Highly Recommended) Permanently Enable ADB
+By default, the ADB Debugging option disables itself after every reboot. To make it persistent for future use:  
+On your host's terminal, enter the following command:
+```
+adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
+```
+Another factory menu will appear on the device's screen.  
+Tap the first option on this screen (the one related to ADB).  
+This will permanently activate ADB Debugging mode, and it will persist through reboots.  
+
+### 2. Obtaining the Image Files
+#### 1) Get the Decrypted update.zip
+Download the official OTA file for your device model, usually named VERSION_NUMBER.hex.  
+Place the downloaded .hex file in the root directory of your device's internal storage.  
+On the device, confirm the update when prompted.  
+While the update is in progress, continuously refresh the device's internal storage directory from your computer.  
+Typically, after the update progress reaches about 50%, you will see an update.zip file appear in the root directory.  
+Quickly copy this update.zip file to your host machine.
+
+#### 2) Decrypt the Files
+Extract the payload.bin file from the update.zip.  
+You need to unpack this payload.bin. (Using payload-dumper is recommended).  
+Alternatively, you can use the payload-dumper.exe provided in the Releases section of this repository. Simply drag and drop the payload.bin file onto the .exe to unpack it.  
+  
+You have now obtained the decrypted system image files.
+
+### 3. Achieving Root with APatch
+Due to a file-writing issue with the package-modified APatch manager on the target device, we need a standard Android device to help with the patching process.
+#### 1) Create the APatched Image on a "Helper" Device  
+You will need a standard, unrestricted Android device (a phone or tablet) to act as a "helper device".  
+* From the downloaded APK.zip, get the APatch_10763_original.apk.  
+Also, locate the stock, official boot.img for your target device.  
+* Install and Transfer:  
+Install APatch_10763_original.apk on your "helper device".  
+Copy the stock boot.img file to the helper device's internal storage (e.g., the "Download" folder).  
+* Patch with APatch:  
+Open the APatch app on the helper device.  
+Set SuperKey and select the boot.img you just copied.  
+Tap "Start Patching."  
+* Retrieve the Final Image:  
+Upon success, a new file named apatch_patched_....img will be generated in the "Download" folder of your helper device. This is our final boot image.  
+Transfer this patched image from the helper device back to your host machine.
+
+#### 2) Flash Images and Reboot
+* On your host's terminal, reboot your target device into fastboot mode:
+```
+adb reboot bootloader
+```
+* Flash vbmeta Images to Disable AVB:  
+We need to flash both vbmeta and vbmeta_system to completely disable Android Verified Boot (AVB).  
+Execute Flashing:  
+While in fastboot mode, execute the following two commands:
+```
+# Disable the main verification chain
+fastboot --disable-verity flash vbmeta vbmeta.img
+
+# Disable the verification chain for the system partition
+fastboot --disable-verity flash vbmeta_system vbmeta_system.img
+```
+* Flash the Final Boot Image:  
+Navigate to the directory containing the final APatch image and execute the flash command:
+```
+# Replace "Your/File/Path" with the actual path and filename
+fastboot flash boot "Your/File/Path/apatch_patched_....img"
+
+# After flashing is complete, reboot your device:
+fastboot reboot
+```
+
+#### 3) Activate Root
+Wait for the device to boot into the OS.
+* Install the Modified APatch Manager:  
+From the APK.zip, find APatch_10763_Modded(com.appgeneration.itunerfree).apk.  
+Install this package-modified version onto your target device.  
+* Gain Root Access:  
+Open the newly installed APatch manager on your device.  
+In the input field on the main screen, enter the SuperKey you set previously.  
+Tap confirm. If everything went smoothly, the app should indicate that root is active. You can verify this by running adb shell and executing the su command to see if you get the # prompt.
+
+** At this point, your Astell&Kern DAP has been successfully rooted. **
+  
+Let your imagination run wild; there's nothing you can't do with root access!  
+Stay tuned for a guide on how to disable the iRiver OS app whitelist! [@7dollars](https://github.com/7dollars)  
+  
+** Enjoy It! **
+
 
 ## Shout-Outs!
 This success wouldn't have been possible without these legends:  
