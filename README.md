@@ -46,7 +46,7 @@ am start --user 0 -n com.iriver.tester.factorytool/.DebugSettingActivity
 ```
 执行后，您将直接进入Astell&Kern的工厂调试界面。  
 在此界面中，找到 ADB Debug 选项，并将其开启。  
-(在PD10上确认该命令已失效，PD10需要在寻找其他方式)
+(在PD10上确认该命令已失效，PD10需要再寻找其他方式)
 
 #### 3) 验证连接
 现在，使用USB数据线将您的设备连接到主机。  
