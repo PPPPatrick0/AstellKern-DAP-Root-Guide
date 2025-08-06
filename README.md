@@ -1,7 +1,10 @@
 # AstellKern-DAP-Root-Guide
 
-Rooting the Astell&Kern DAP with Apatch  
-通过Apatch来获取艾利和数字播放器的Root权限
+**[The APK Whitelist Removal solution has been released. Click here to check it out!](https://github.com/PPPPatrick0/Disable-AstellKern-UI4-App-Whitelist)**  
+**[APK白名单解除方案现已发布，点击查看](https://github.com/PPPPatrick0/Disable-AstellKern-UI4-App-Whitelist)**
+
+**Rooting the Astell&Kern DAP with Apatch**  
+**通过Apatch来获取艾利和数字播放器的Root权限**
 <img width="1080" height="1920" alt="Screenshot-trinket 1234567 -20250804145857" src="https://github.com/user-attachments/assets/98c6a9e1-ac68-4b4c-ad84-e974af0d0f84" />
 
 ## [Chinese Version](https://github.com/PPPPatrick0/AstellKern-DAP-Root-Guide?tab=readme-ov-file#%E4%B8%AD%E6%96%87%E7%89%88chinese-version)
