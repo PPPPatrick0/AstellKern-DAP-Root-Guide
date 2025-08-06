@@ -139,8 +139,10 @@ fastboot reboot
 **至此，您的Astell&Kern DAP已成功获取Root权限。**  
   
 请发挥你的想象力，没有什么是在拥有Root后做不到的！  
+<del>
 关于解除Iriver操作系统的APP白名单限制，敬请期待！[@7dollars](https://github.com/7dollars)  
-
+</del>
+  
 **Enjoy It!**
 
 
@@ -273,7 +275,9 @@ Tap confirm. If everything went smoothly, the app should indicate that root is a
 **At this point, your Astell&Kern DAP has been successfully rooted.**
   
 Let your imagination run wild; there's nothing you can't do with root access!  
+<del>
 Stay tuned for a guide on how to disable the iRiver OS app whitelist! [@7dollars](https://github.com/7dollars)  
+</del>
   
 **Enjoy It!**
 
