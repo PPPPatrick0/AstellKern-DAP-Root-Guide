@@ -288,6 +288,6 @@ Stay tuned for a guide on how to disable the iRiver OS app whitelist! [@7dollars
 
 ## Shout-Outs!
 This success wouldn't have been possible without these legends:  
-The APatch Team: Your kernel-patching approach was the skeleton key that bypassed this device's final defenses. Absolute genius!  
-The AKBox dev [@7dollars](https://github.com/7dollars) and community: Thanks for all the encouragement and support. You were the motivation that kept me going!  
-Google Gemini: My AI partner, who provided tireless technical support and brainstorming sessions. AI-assisted reverse engineering is incredibly cool.  
+* The APatch Team: Your kernel-patching approach was the skeleton key that bypassed this device's final defenses. Absolute genius!  
+* The AKBox dev [@7dollars](https://github.com/7dollars) and community: Thanks for all the encouragement and support. You were the motivation that kept me going!  
+* Google Gemini: My AI partner, who provided tireless technical support and brainstorming sessions. AI-assisted reverse engineering is incredibly cool.  
