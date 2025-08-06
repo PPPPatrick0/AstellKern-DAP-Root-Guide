@@ -40,7 +40,7 @@
 在设备上启用开发者选项，并打开USB调试权限。  
 由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个自制的APK来调用其隐藏的工厂调试菜单。
 #### 1) 开启ADB调试
-在Release中，下载 AKTestModeEnable(com.now.moov).apk 。（Tag V0.2开始提供）  
+在Release中，下载 EnableAKTestMode(com.now.moov).apk 。（Tag V0.2开始提供）  
 将此APK文件传输到您的设备内部存储中，并进行安装。  
 安装完成后，进入该应用，点击“打开DebugSettings”，并点击第一个按钮，确保第一个按钮显示为“ADB ENABLED”。
 
@@ -184,6 +184,7 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 ### 1. Preparation: Enabling ADB
 Since AK devices do not provide an option to enable ADB Debugging in the standard settings, we need to use a custom-made APK to invoke a hidden factory debug menu.
 #### 1) Enable ADB Debugging
+From the Releases section, download EnableAKTestMode(com.now.moov).apk. (Available starting from Tag v0.2).
 Transfer this APK file to your device's internal storage and install it.
 Once installed, open the application. Tap on "打开DebugSettings", then tap the first button and ensure its text changes to "ADB ENABLED".
 
