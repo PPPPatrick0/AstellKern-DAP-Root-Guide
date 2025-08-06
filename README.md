@@ -65,6 +65,7 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 ```
 设备的屏幕上会再次出现一个工厂调试界面。  
 点击此界面上的第一个选项（与ADB相关的选项）。  
+（注：在PD10上可能不是第一个）  
 完成此操作后，ADB调试模式将会被永久激活，即使设备重启也不会关闭。
 
 ### 2 获取镜像文件
@@ -211,6 +212,7 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 ```
 Another factory menu will appear on the device's screen.  
 Tap the first option on this screen (the one related to ADB).  
+(Note: On the PD10, it may not be the first option.)  
 This will permanently activate ADB Debugging mode, and it will persist through reboots.  
 
 ### 2. Obtaining the Image Files
