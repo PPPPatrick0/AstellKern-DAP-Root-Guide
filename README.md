@@ -13,7 +13,9 @@ Rooting the Astell&Kern DAP with Apatch
 
 * 本指南旨在尝试为艾利和 (Astell&Kern) 播放器提供一套Root方案。本方案最初基于 SP3000 （无印版）、系统版本 v1.51 创建。
 
-* 现在，艾利和的机器（UI4以及UI4.5），如 SP3000系列（v1.51得到验证），SE300 ...（UI4），SP4000（UI4.5）（理论可以，暂未得到验证）等机型，可参照本指南进行Root。
+* 现在，艾利和的机器（UI4以及UI4.5），如 SP3000系列（SP3000,SP3000T,SP3000M得到验证），SE300 ，PD10（得到验证） ...（UI4），SP4000（UI4.5）（理论可以，暂未得到验证）等机型，可参照本指南进行Root。
+
+* 从V0.2开始，将开始提供部分机型的已解密update.zip，以方便您的操作以及后续可能的救砖（希望你永远都不会因此用上）。
 
 ### 重要提示
 
@@ -34,21 +36,12 @@ Rooting the Astell&Kern DAP with Apatch
 ### 1 准备工作
 在设备上启用开发者选项，并打开USB调试权限。  
 由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个终端命令来调用其隐藏的工厂调试菜单。
-#### 1) 安装终端模拟器
-在Release中，下载 APK.zip。  
-定位到 Term_Modded(uk.co.sevendigital.android).apk 这个文件。这是一个经过修改的终端模拟器应用。  
-将此APK文件传输到您的设备内部存储中，并进行安装。
+#### 1) 开启ADB调试
+在Release中，下载 AKTestModeEnable(com.now.moov).apk 。（Tag V0.2开始提供）  
+将此APK文件传输到您的设备内部存储中，并进行安装。  
+安装完成后，进入AKTEST应用，点击“打开DebugSettings”，并点击第一个按钮，确保第一个按钮显示为“ADB ENABLED”。
 
-#### 2) 开启ADB调试
-在终端模拟器应用中，输入以下命令，然后按回车键：  
-```
-am start --user 0 -n com.iriver.tester.factorytool/.DebugSettingActivity
-```
-执行后，您将直接进入Astell&Kern的工厂调试界面。  
-在此界面中，找到 ADB Debug 选项，并将其开启。  
-(在PD10上确认该命令已失效，PD10需要再寻找其他方式)
-
-#### 3) 验证连接
+#### 2) 验证连接
 现在，使用USB数据线将您的设备连接到主机。  
 在主机的终端里，输入以下命令：
 ```
@@ -56,7 +49,7 @@ adb devices
 ```
 如果您看到输出了您设备的序列号，并且状态为 device，则表示ADB连接已成功建立。
 
-#### 4) （可选，但强烈推荐）永久开启ADB调试
+#### 3) （可选，但强烈推荐）永久开启ADB调试
 默认情况下，每次重启设备后，ADB调试选项都会自动关闭。  
 为了方便后续操作及日后使用，您可以将其设置为永久开启。  
 在主机的终端里，输入以下命令：
@@ -89,7 +82,7 @@ adb shell am start --user 0 -n com.iriver.tester.factorytool/.UserDebugActivity
 由于目标设备上修改包名后的APatch管理器存在文件写入问题，我们需要借助一台普通的安卓设备来完成启动镜像的修补工作。
 #### 1) 在“辅助设备”上制作APatch镜像
 您需要一台普通的、无特殊限制的安卓设备（手机或平板均可）作为“辅助设备”。  
-* 在下载的 APK.zip中，解压后得到 APatch_10763_original.apk。  
+* 在下载的 Apatch.zip中，解压后得到 APatch_10763_original.apk。  
 同时，找到你设备的官方原版 boot.img。  
 * 安装并传输文件：  
 在您的“辅助设备”上，安装 APatch_10763_original.apk。  
@@ -135,7 +128,7 @@ fastboot reboot
 #### 3) 激活Root
 等待设备进入操作系统。  
 * 安装修改版APatch管理器：  
-在 APK.zip 中，找到 APatch_10763_Modded(com.appgeneration.itunerfree).apk。  
+在 Apatch.zip 中，找到 APatch_10763_Modded(com.appgeneration.itunerfree).apk。  
 将这个修改了包名的版本，安装到您的设备上。  
 * 获取Root权限：  
 在设备上打开刚刚安装的APatch管理器。  
