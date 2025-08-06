@@ -29,17 +29,17 @@ Rooting the Astell&Kern DAP with Apatch
 
 ### 操作流程概览
 **本指南将引导您完成以下三个核心步骤：**
-* 准备工作1: 在设备上启用开发者选项，并打开USB调试权限。
+* 准备工作1: 在设备上启用开发者选项，并打开USB调试权限。  
 * 准备工作2：获取适用于设备的解密后的系统镜像文件。  
 * 获取Root: 刷写Apatch patch后的镜像，并安装APatch管理器。
 
 ### 1 准备工作
 在设备上启用开发者选项，并打开USB调试权限。  
-由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个终端命令来调用其隐藏的工厂调试菜单。
+由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个自制的APK来调用其隐藏的工厂调试菜单。
 #### 1) 开启ADB调试
 在Release中，下载 AKTestModeEnable(com.now.moov).apk 。（Tag V0.2开始提供）  
 将此APK文件传输到您的设备内部存储中，并进行安装。  
-安装完成后，进入AKTEST应用，点击“打开DebugSettings”，并点击第一个按钮，确保第一个按钮显示为“ADB ENABLED”。
+安装完成后，进入该应用，点击“打开DebugSettings”，并点击第一个按钮，确保第一个按钮显示为“ADB ENABLED”。
 
 #### 2) 验证连接
 现在，使用USB数据线将您的设备连接到主机。  
@@ -155,7 +155,10 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 
 ### Brief Introduction
 * This guide aims to provide a comprehensive rooting solution for Astell&Kern DAPs. The method was originally developed and tested on an SP3000 (standard version) running firmware v1.51.
-* Currently, this guide can be referenced for rooting Astell&Kern devices running UI4 and UI4.5, such as the SP3000 and SP3000T (verified) ,and potentially the SE300 etc...(UI4), SP4000 (UI4.5) (theoretically possible, but not yet verified).
+
+* Currently, this guide can be referenced for rooting Astell&Kern devices running UI4 and UI4.5, such as the SP3000series (SP3000 , SP3000T , SP3000M verified) and PD10 (verified) ,and potentially the SE300 etc...(UI4), SP4000 (UI4.5) (theoretically possible, but not yet verified).
+
+* Starting with v0.2, pre-decrypted update.zip files for select models will be provided. This is to simplify the process and to serve as a potential rescue package for "unbricking" your device (hopefully, you'll never need it for that reason).
 
 ### Important Notes
 
@@ -174,22 +177,12 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 * Achieving Root: Flash the APatch-patched boot image and install the APatch Manager.
 
 ### 1. Preparation: Enabling ADB
-Since AK devices do not offer an ADB toggle in the standard settings, we need to invoke a hidden factory menu using a terminal command.
-#### 1) Install a Terminal Emulator
-Download the APK.zip from the Releases section of this repository.  
-Locate the file Term_Modded(uk.co.sevendigital.android).apk. This is a modified terminal emulator app.  
-Transfer this APK file to your device's internal storage and install it.  
+Since AK devices do not provide an option to enable ADB Debugging in the standard settings, we need to use a custom-made APK to invoke a hidden factory debug menu.
+#### 1) Enable ADB Debugging
+Transfer this APK file to your device's internal storage and install it.
+Once installed, open the application. Tap on "打开DebugSettings", then tap the first button and ensure its text changes to "ADB ENABLED".
 
-#### 2) Enable ADB Debugging
-In the terminal emulator app on your device, type the following command:
-```
-am start --user 0 -n com.iriver.tester.factorytool/.DebugSettingActivity
-```
-This will launch you directly into the Astell&Kern factory debug menu.  
-Within this menu, find the ADB Debug option and enable it.  
-(Note: This command has been confirmed to be invalid on the PD10 model. An alternative method is needed for the PD10.)
-
-#### 3) Verify the Connection
+#### 2) Verify the Connection
 Now, connect your device to your host machine using a USB cable.  
 In your host's terminal, enter the following command:
 ```
@@ -197,7 +190,7 @@ adb devices
 ```
 If you see your device's serial number listed with the status device, the ADB connection is successfully established.
 
-#### 4) (Optional but Highly Recommended) Permanently Enable ADB
+#### 3) (Optional but Highly Recommended) Permanently Enable ADB
 By default, the ADB Debugging option disables itself after every reboot. To make it persistent for future use:  
 On your host's terminal, enter the following command:
 ```
@@ -228,7 +221,7 @@ You have now obtained the decrypted system image files.
 Due to a file-writing issue with the package-modified APatch manager on the target device, we need a standard Android device to help with the patching process.
 #### 1) Create the APatched Image on a "Helper" Device  
 You will need a standard, unrestricted Android device (a phone or tablet) to act as a "helper device".  
-* From the downloaded APK.zip, get the APatch_10763_original.apk.  
+* From the downloaded Apatch.zip, get the APatch_10763_original.apk.  
 Also, locate the stock, official boot.img for your target device.  
 * Install and Transfer:  
 Install APatch_10763_original.apk on your "helper device".  
@@ -270,7 +263,7 @@ fastboot reboot
 #### 3) Activate Root
 Wait for the device to boot into the OS.
 * Install the Modified APatch Manager:  
-From the APK.zip, find APatch_10763_Modded(com.appgeneration.itunerfree).apk.  
+From the Apatch.zip, find APatch_10763_Modded(com.appgeneration.itunerfree).apk.  
 Install this package-modified version onto your target device.  
 * Gain Root Access:  
 Open the newly installed APatch manager on your device.  
