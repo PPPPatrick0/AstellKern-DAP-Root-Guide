@@ -32,12 +32,12 @@
 
 ### 操作流程概览
 **本指南将引导您完成以下三个核心步骤：**
-* 准备工作1: 在设备上启用开发者选项，并打开USB调试权限。  
+* 准备工作1: 在设备上启用USB调试权限。  
 * 准备工作2：获取适用于设备的解密后的系统镜像文件。  
 * 获取Root: 刷写Apatch patch后的镜像，并安装APatch管理器。
 
 ### 1 准备工作
-在设备上启用开发者选项，并打开USB调试权限。  
+在设备上启用USB调试权限。  
 由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个自制的APK来调用其隐藏的工厂调试菜单。
 #### 1) 开启ADB调试
 在Release中，下载 EnableAKTestMode(com.now.moov).apk 。（Tag V0.2开始提供）  
@@ -177,7 +177,7 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 
 ### Process Overview
 ** This guide will walk you through three core stages: **
-* Preparation 1: Enable Developer Options and turn on USB Debugging on your device.
+* Preparation 1: Enable USB Debugging on your device.
 * Preparation 2: Obtain the decrypted system image files for your device.
 * Achieving Root: Flash the APatch-patched boot image and install the APatch Manager.
 
