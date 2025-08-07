@@ -19,6 +19,8 @@
 * 现在，艾利和的机器（UI4以及UI4.5），如 SP3000系列（SP3000,SP3000T,SP3000M得到验证），SE300 ，PD10（得到验证） ...（UI4），SP4000（UI4.5）（理论可以，暂未得到验证）等机型，可参照本指南进行Root。
 
 * 从V0.2开始，将开始提供部分机型的已解密update.zip，以方便您的操作以及后续可能的救砖（希望你永远都不会因此用上）。
+(V0.2增加了SP3000 V1.51)  
+(V0.3增加了SP3000T V1.21 ，SP3000M V1.21)
 
 ### 重要提示
 
@@ -27,7 +29,7 @@
 
 **APK包名确认:**
 * 由于AK操作系统采用白名单制度来限制APK文件的安装，本指南中的所有APK文件均通过了修改Package Name的方式来绕过AK的限制。  
-因此，每一个修改后的APK文件格式均为xxx_Modded(package_name).apk的格式上传，以方便你自行查找是否存在包名冲突的Application。  
+因此，每一个修改后的APK文件格式均为xxx(package_name).apk的格式上传，以方便你自行查找是否存在包名冲突的Application。  
 （仅限UI4的机型）
 
 ### 操作流程概览
@@ -40,8 +42,8 @@
 在设备上启用USB调试权限。  
 由于AK的设备没有在常规设置中提供开启ADB调试的入口，我们需要通过一个自制的APK来调用其隐藏的工厂调试菜单。
 #### 1) 开启ADB调试
-在Release中，下载 EnableAKTestMode(com.now.moov).apk 。（Tag V0.2开始提供）  
-将此APK文件传输到您的设备内部存储中，并进行安装。  
+在Release(Tag:Files)的中，下载全部文件。
+将此 EnableAKTestMode(com.now.moov).apk 传输到您的设备内部存储中，并进行安装。  
 安装完成后，进入该应用，点击“打开DebugSettings”，并点击第一个按钮，确保第一个按钮显示为“ADB ENABLED”。
 
 #### 2) 验证连接
@@ -163,7 +165,9 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 
 * Currently, this guide can be referenced for rooting Astell&Kern devices running UI4 and UI4.5, such as the SP3000series (SP3000 , SP3000T , SP3000M verified) and PD10 (verified) ,and potentially the SE300 etc...(UI4), SP4000 (UI4.5) (theoretically possible, but not yet verified).
 
-* Starting with v0.2, pre-decrypted update.zip files for select models will be provided. This is to simplify the process and to serve as a potential rescue package for "unbricking" your device (hopefully, you'll never need it for that reason).
+* Starting with v0.2, pre-decrypted update.zip files for select models will be provided. This is to simplify the process and to serve as a potential rescue package for "unbricking" your device (hopefully, you'll never need it for that reason).  
+(V0.2 Add SP3000 V1.51)  
+(V0.3 Add SP3000T V1.21 , SP3000M V1.21)
 
 ### Important Notes
 
@@ -172,7 +176,7 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 
 **APK Package Name Confirmation**
 * Due to the Astell&Kern OS employing a whitelist system to restrict APK installations, all APK files provided in this guide have had their Package Names modified to bypass this limitation.
-* Consequently, each modified APK is named in the format of xxx_Modded(package_name).apk. This is to help you check for any potential package name conflicts with applications already on your device.  
+* Consequently, each modified APK is named in the format of xxx(package_name).apk. This is to help you check for any potential package name conflicts with applications already on your device.  
 (This applies to UI4-based models).
 
 ### Process Overview
@@ -184,8 +188,8 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 ### 1. Preparation: Enabling ADB
 Since AK devices do not provide an option to enable ADB Debugging in the standard settings, we need to use a custom-made APK to invoke a hidden factory debug menu.
 #### 1) Enable ADB Debugging
-From the Releases section, download EnableAKTestMode(com.now.moov).apk. (Available starting from Tag v0.2).
-Transfer this APK file to your device's internal storage and install it.
+From the Releases (Tag:Files) section, download all.  
+Transfer EnableAKTestMode(com.now.moov).apk to your device's internal storage and install it.  
 Once installed, open the application. Tap on "打开DebugSettings", then tap the first button and ensure its text changes to "ADB ENABLED".
 
 #### 2) Verify the Connection
