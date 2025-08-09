@@ -163,7 +163,7 @@ My translator is currently compiling (or maybe I'm just procrastinating). An Eng
 ### Brief Introduction
 * This guide aims to provide a comprehensive rooting solution for Astell&Kern DAPs. The method was originally developed and tested on an SP3000 (standard version) running firmware v1.51.
 
-* Currently, this guide can be referenced for rooting Astell&Kern devices running UI4 and UI4.5, such as the SP3000series (SP3000 , SP3000T , SP3000M verified) and PD10 (verified) ,and potentially the SE300 etc...(UI4), SP4000 (UI4.5) (theoretically possible, but not yet verified).
+* Currently, this guide can be referenced for rooting Astell&Kern devices running UI4 and UI4.5, such as the SP3000series (SP3000 , SP3000T , SP3000M verified) and PD10 (verified) , SR35 (verified) and potentially the SE300 etc...(UI4), SP4000 (UI4.5) (theoretically possible, but not yet verified).
 
 * Starting with v0.2, pre-decrypted update.zip files for select models will be provided. This is to simplify the process and to serve as a potential rescue package for "unbricking" your device (hopefully, you'll never need it for that reason).  
 (V0.2 Add SP3000 V1.51)  
